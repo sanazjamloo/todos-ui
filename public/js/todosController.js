@@ -1,5 +1,5 @@
 (function(){
-  angular.module('todo')
+  angular.module('todoApp')
     .controller('todosController', todosController);
 
 
@@ -7,7 +7,37 @@
 
     var self = this;
     var rootUrl = "https://desolate-meadow-28084.herokuapp.com/"
-    // For example, var server = 'https://enigmatic-garden-65625.herokuapp.com/api/'
+
+    this.todoList = [
+      {task:'call dad', done: false},
+      {task:'get a gify for Mary', done: true}
+    ];
+
+    self.addTodo = addTodo;
+    self.deleteTodo = deleteTodo;
+    self.completedTodos = completedTodos;
+    self.remainingTodos = remainingTodos;
+
+    // add new todo to the list
+    function addTodo(){
+      self.todoList.push({task: self.text, done:false});
+      self.text = null;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     $http.get(`${rootUrl}/todos`)
       .then(function(response) {
